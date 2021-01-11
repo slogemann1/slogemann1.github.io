@@ -9,16 +9,33 @@
     <center>
       <h1 style="position: relative; right: 37px;"><u><b>Perlin Noise</b></u></h1>
     </center>
+    <h2 style="position: absolute; left: 15px; top: -15px"><a href="https://github.com/slogemann1/perlin-noise">Code Hier</a></h2>
     <h2 style="position: absolute; right: 35px; top: -20px;">Seed:</h2>
     <input type="text" style="position: absolute; right: 10px; top: 35px; width: 100px;" value="120398471023" id="seed"></input>
     <script type="module">
       import init from './perlin_noise.js'
 
-      async function run() {
-        await init()
-      }
-      
       run()
+      async function run() {
+          let wasm = await init()
+          initInput(wasm)
+      }
+
+      function initInput(wasm) {
+          let input = document.getElementById("seed");
+          input.addEventListener(
+              "change",
+              (e) => {
+                  changeSeed(input, wasm)
+              }
+          );
+      }
+
+      function changeSeed(input, wasm) {
+          let newSeed = input.value.trim()
+          wasm.set_seed(newSeed)
+          wasm.reset_canvas()
+      }
     </script>
   </body>
 </html>
