@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Perlin Noise</title>
+  </head>
+  <body bgcolor="#BBBBBB">
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+    <center>
+      <h1 style="position: relative; right: 37px;"><u><b>Perlin Noise</b></u></h1>
+    </center>
+    <h2 style="position: absolute; right: 35px; top: -20px;">Seed:</h2>
+    <input type="text" style="position: absolute; right: 10px; top: 35px; width: 100px;" value="120398471023" id="seed"></input>
+    <script type="module">
+      import init from './perlin_noise.js'
+
+      async function run() {
+        await init()
+      }
+      
+      run()
+    </script>
+  </body>
+</html>
